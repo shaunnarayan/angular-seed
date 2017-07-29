@@ -1,5 +1,10 @@
 {
-  "extends": "./tools/config/seed.tslint.json",
-  "rules": {
-  }
+    "extends": "./tools/config/seed.tslint.json",
+    "rules": {
+        "trailing-comma": [
+            false,
+            { "multiline": "never", "singleline": "never" }
+        ],
+        "quotemark": [true, "double"]
+    }
 }
