@@ -1,7 +1,7 @@
 import { join } from "path";
 
 import { SeedConfig } from "./seed.config";
-// import { ExtendPackages } from './seed.config.interfaces';
+import { ExtendPackages } from "./seed.config.interfaces";
 
 /**
  * This class extends the basic seed configuration, allowing for project specific overrides. A few examples can be found
@@ -42,13 +42,57 @@ export class ProjectConfig extends SeedConfig {
         ];
 
         // Add packages (e.g. ng2-translate)
-        // let additionalPackages: ExtendPackages[] = [{
-        //   name: 'ng2-translate',
-        //   // Path to the package's bundle
-        //   path: 'node_modules/ng2-translate/bundles/ng2-translate.umd.js'
-        // }];
-        //
-        // this.addPackagesBundles(additionalPackages);
+        let additionalPackages: ExtendPackages[] = [
+            {
+                name: "angulartics2",
+                path: "node_modules/angulartics2",
+                packageMeta: {
+                    main: "dist/core.umd.js",
+                    defaultExtension: "js"
+                }
+            },
+            {
+                name: "@ngrx/store",
+                path: "node_modules/@ngrx/store",
+                packageMeta: {
+                    main: "bundles/store.umd.js",
+                    defaultExtension: "js"
+                }
+            },
+            {
+                name: "@ngrx/effects",
+                path: "node_modules/@ngrx/effects",
+                packageMeta: {
+                    main: "bundles/effects.umd.js",
+                    defaultExtension: "js"
+                }
+            },
+            {
+                name: "@ngrx/router-store",
+                path: "node_modules/@ngrx/router-store",
+                packageMeta: {
+                    main: "bundles/router-store.umd.js",
+                    defaultExtension: "js"
+                }
+            },
+            {
+                name: "@ngrx/store-devtools",
+                path: "node_modules/@ngrx/store-devtools",
+                packageMeta: {
+                    main: "bundles/store-devtools.umd.js",
+                    defaultExtension: "js"
+                }
+            },
+            {
+                name: "lodash",
+                path: "node_modules/lodash",
+                packageMeta: {
+                    main: "index.js",
+                    defaultExtension: "js"
+                }
+            }
+        ];
+        this.addPackagesBundles(additionalPackages);
 
         /* Add proxy middleware */
         // this.PROXY_MIDDLEWARE = [
